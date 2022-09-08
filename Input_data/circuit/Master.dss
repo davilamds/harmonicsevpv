@@ -1,0 +1,29 @@
+clear
+
+Set DefaultBaseFrequency=50  ! for European system
+
+New circuit.LVTest
+
+
+Edit Vsource.Source BasekV=11 pu=1.05  ISC3=3000  ISC1=5
+Redirect Spectrum.dss
+Redirect LineCode.txt
+Redirect LoadShapes.txt
+Redirect Lines.txt
+Redirect Transformers.txt
+Redirect Loads.txt
+!Redirect Photovoltaic.txt
+!Redirect Photovoltaic2.txt
+Redirect EVLoadShapes.txt
+!Redirect vehicles.txt
+!Redirect Monitors.txt
+
+
+
+Set voltagebases=[11  .416]
+Calcvoltagebases
+
+buscoords buscoords.txt
+
+New monitor.MPCC element=load.load20 terminal=1 mode=0
+
